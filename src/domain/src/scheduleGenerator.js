@@ -4,7 +4,7 @@ const scheduleTaskChecker = require('./scheduleTaskChecker.js')
 const CHORES = require('./choresLookup.js')
 
 // all weekly task codes: C, E, P
-const fairShareWeeklyTaskCodes = ['E', 'P']
+const fairShareWeeklyTaskCodes = ['C']
 
 function generateScheduleForDay(tasks) {
   const weekNumber = getWeekNumber()
