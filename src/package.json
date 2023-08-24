@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jkdmyrs/chores.git"
+    "url": "git+https://github.com/jkdmyrs/jachores.git"
   },
   "keywords": [
     "jack",
@@ -30,9 +30,9 @@
   "author": "jkdmyrs",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/jkdmyrs/chores/issues"
+    "url": "https://github.com/jkdmyrs/jachores/issues"
   },
-  "homepage": "https://github.com/jkdmyrs/chores#readme",
+  "homepage": "https://github.com/jkdmyrs/jachores#readme",
   "devDependencies": {
     "@babel/core": "^7.22.10",
     "@babel/preset-env": "^7.22.10",
