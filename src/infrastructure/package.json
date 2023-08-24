@@ -1,0 +1,25 @@
+{
+  "name": "jachores-infra",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkdmyrs/chores.git"
+  },
+  "keywords": [
+    "jack",
+    "alex",
+    "chores"
+  ],
+  "author": "jkdmyrs",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jkdmyrs/chores/issues"
+  },
+  "homepage": "https://github.com/jkdmyrs/chores#readme",
+  "dependencies": {
+    "@azure/data-tables": "^13.2.2",
+    "@azure/storage-blob": "^12.15.0"
+  }
+}

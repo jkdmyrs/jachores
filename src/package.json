@@ -1,0 +1,43 @@
+{
+  "name": "jachores-server-build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build:app": "webpack",
+    "build:container": "npm run build:app && npm run compose",
+    "compose": "docker build -t jkdmyrs.azurecr.io/jachores:latest .",
+    "push:current": "npm run push",
+    "push:build": "npm run build:container && npm run push",
+    "push": "docker push jkdmyrs.azurecr.io/jachores:latest",
+    "run": "docker run -p 3000:80 jkdmyrs.azurecr.io/jachores:latest",
+    "start": "npm run build:container && npm run run",
+    "start:install": "npm run install:all && npm run build:container && npm run run",
+    "install:all": "npm install && npm run install:infra && npm run install:api",
+    "install:api": "cd ./api && npm i",
+    "install:infra": "cd ./infrastructure && npm i",
+    "login:acr": "az acr login --name jkdmyrs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkdmyrs/chores.git"
+  },
+  "keywords": [
+    "jack",
+    "alex",
+    "chores"
+  ],
+  "author": "jkdmyrs",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jkdmyrs/chores/issues"
+  },
+  "homepage": "https://github.com/jkdmyrs/chores#readme",
+  "devDependencies": {
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "babel-loader": "^9.1.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}

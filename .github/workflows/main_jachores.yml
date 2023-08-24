@@ -1,0 +1,83 @@
+name: jachores
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+
+      - uses: azure/docker-login@v1
+        with:
+          login-server: 'jkdmyrs.azurecr.io'
+          username: 'jkdmyrs'
+          password: '${{ secrets.CONTAINER_REGISTRY_PASSWORD }}'
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '18.x'
+
+      - name: replace tokens
+        env:
+          STORAGECONN: ${{ secrets.STORAGECONN }}
+        run: |
+          cd src/
+          node tokenReplace.js
+
+      - name: set prod build env
+        run: |
+          cd src/
+          mv env.tokenized.js env.js
+
+      - name: build jkdmyrs.azurecr.io/jachores:latest
+        run: |
+          cd src/
+          npm run install:all
+          npm run build:container
+
+      - name: build jkdmyrs.azurecr.io/jachores-reverse-proxy:latest
+        run: |
+          cd src/reverseProxy
+          npm run build
+
+      - name: build jachores-web
+        run: |
+          cd src/web
+          npm i
+          npm run build
+
+      - name: push jkdmyrs.azurecr.io/jachores-reverse-proxy:latest
+        if: false # never run this unless we explcitly need to, we get rate limited to 5 times a week
+        run: |
+          cd src/reverseProxy
+          npm run push:current
+
+      - name: restart jachores-ssl-proxy
+        if: false # never run this unless we explcitly need to, we get rate limited to 5 times a week
+        run: |
+          az container restart --name "jachores-ssl-proxy" --subscription "${{ secrets.AZ_SUB }}" --resource-group "jachores"
+
+      - name: push jkdmyrs.azurecr.io/jachores:latest
+        run: |
+          cd src/
+          npm run push:current
+
+      - name: restart jachores
+        run: |
+          az container restart --name "jachores" --subscription "${{ secrets.AZ_SUB }}" --resource-group "jachores"
+
+      - name: deploy jachores-web
+        run: |
+          cd src/web
+          npm run deploy

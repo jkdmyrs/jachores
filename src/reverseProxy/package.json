@@ -1,0 +1,29 @@
+{
+  "name": "jachores-reverse-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "docker build -t jkdmyrs.azurecr.io/jachores-reverse-proxy:latest .",
+    "push:current": "npm run push",
+    "push:build": "npm run build && npm run push",
+    "push": "docker push jkdmyrs.azurecr.io/jachores-reverse-proxy:latest",
+    "run": "docker run -p 4000:443 -p 4001:80 jkdmyrs.azurecr.io/jachores-reverse-proxy:latest",
+    "start": "npm run build && npm run run",
+    "login:acr": "az acr login --name jkdmyrs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkdmyrs/chores.git"
+  },
+  "keywords": [
+    "jack",
+    "alex",
+    "chores"
+  ],
+  "author": "jkdmyrs",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jkdmyrs/chores/issues"
+  },
+  "homepage": "https://github.com/jkdmyrs/chores#readme"
+}
