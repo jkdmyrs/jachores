@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const env = require('../../env.js')
+const env = require('../../env_server.js')
 
 const taskService = require('./tasks/taskService.js')
 

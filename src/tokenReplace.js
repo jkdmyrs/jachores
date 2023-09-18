@@ -1,8 +1,12 @@
 const fs = require('fs')
 
-const configFile = 'env.tokenized.js'
-let configContent = fs.readFileSync(configFile, 'utf8')
+const serverConfig = 'env_server.tokenized.js'
+let serverConfigContent = fs.readFileSync(serverConfig, 'utf8')
+// replacements
+serverConfigContent = serverConfigContent.replace('__STORAGECONN__', process.env.STORAGECONN)
+fs.writeFileSync(serverConfig, configContent, 'utf8')
 
-configContent = configContent.replace('__STORAGECONN__', process.env.STORAGECONN)
-
-fs.writeFileSync(configFile, configContent, 'utf8')
+const webConfig = 'env_web.tokenized.js'
+let webConfigContent = fs.readFileSync(webConfig, 'utf8')
+// replacements
+fs.writeFileSync(webConfig, configContent, 'utf8')

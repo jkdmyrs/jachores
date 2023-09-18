@@ -5,7 +5,7 @@ import * as PERSON from '../../../../domain/src/personLookup.js'
 import * as Task from '../../../../domain/src/task.js'
 import * as ScheduleRow from '../../../../domain/src/scheduleRow.js'
 import * as scheduleGenerator from '../../../../domain/src/scheduleGenerator.js'
-import * as env from "../../../../env.js"
+import * as env from "../../../../env_web.js"
 
 let checkboxIndex
 let todaysSchedule
