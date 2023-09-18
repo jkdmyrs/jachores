@@ -38,7 +38,8 @@ jobs:
       - name: set prod build env
         run: |
           cd src/
-          mv env.tokenized.js env.js
+          mv env_server.tokenized.js env_server.js
+          mv env_web.tokenized.js env_web.js
 
       - name: build jkdmyrs.azurecr.io/jachores:latest
         run: |

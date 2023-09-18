@@ -1,5 +1,5 @@
 const { TableClient } = require("@azure/data-tables")
-const env = require('../../../../env.js')
+const env = require('../../../../env_server.js')
 
 
 function createTableClient(tableName) {
