@@ -35,15 +35,15 @@ function createAdjustedScheduleRow(scheduleRow, weekNumber, dayNumber) {
 
   if (isFairShareTask) {
     if (scheduleRow.cc == "W" || scheduleRow.cc == "2") {
-      return scheduleRow.toAdjustedCode(weekNumber % 2 ? "A" : "J")
+      return scheduleRow.toAdjustedCode(weekNumber % 2 ? "J" : "A")
     }
     else if (scheduleRow.cc == "D") {
-      return scheduleRow.toAdjustedCode(dayNumber % 2 ? "A" : "J")
+      return scheduleRow.toAdjustedCode(dayNumber % 2 ? "J" : "A")
     }
   }
   else {
     if (scheduleRow.cc == "W" || scheduleRow.cc == "2") {
-      return scheduleRow.toAdjustedCode(weekNumber % 2 ? "J" : "A")
+      return scheduleRow.toAdjustedCode(weekNumber % 2 ? "A" : "J")
     }
     else if (scheduleRow.cc == "D") {
       return scheduleRow.toAdjustedCode(dayNumber % 2 ? "J" : "A")
