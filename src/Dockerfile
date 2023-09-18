@@ -5,7 +5,7 @@ FROM node:18
 WORKDIR /app
 
 # Copy the local package.json and package-lock.json files to the container's working directory
-COPY server/* local.settings.json ./
+COPY server/server.js local.settings.json ./
 
 # Inform Docker that the container listens on port 80 at runtime
 EXPOSE 80
