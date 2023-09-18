@@ -40,6 +40,7 @@ jobs:
           cd src/
           mv env_server.tokenized.js env_server.js
           mv env_web.tokenized.js env_web.js
+          mv Dockerfile.prod Dockerfile
 
       - name: build jkdmyrs.azurecr.io/jachores:latest
         run: |
