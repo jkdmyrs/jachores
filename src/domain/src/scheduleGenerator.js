@@ -35,24 +35,24 @@ function createAdjustedScheduleRow(scheduleRow, weekNumber, dayNumber) {
 
   if (isFairShareTask) {
     if (scheduleRow.cc == "W" || scheduleRow.cc == "2") {
-      return scheduleRow.toAdjustedCode(weekNumber % 2 ? "J" : "A")
-    }
-    else if (scheduleRow.cc == "D") {
-      return scheduleRow.toAdjustedCode(dayNumber % 2 ? "J" : "A")
-    }
-  }
-  else {
-    if (scheduleRow.cc == "W" || scheduleRow.cc == "2") {
       return scheduleRow.toAdjustedCode(weekNumber % 2 ? "A" : "J")
     }
     else if (scheduleRow.cc == "D") {
       return scheduleRow.toAdjustedCode(dayNumber % 2 ? "A" : "J")
     }
   }
+  else {
+    if (scheduleRow.cc == "W" || scheduleRow.cc == "2") {
+      return scheduleRow.toAdjustedCode(weekNumber % 2 ? "J" : "A")
+    }
+    else if (scheduleRow.cc == "D") {
+      return scheduleRow.toAdjustedCode(dayNumber % 2 ? "J" : "A")
+    }
+  }
 }
 
 function getWeekNumber() {
-  const day0 = new Date(2023, 7, 6)
+  const day0 = new Date(2023, 7, 7)
   const today = new Date()
   const differenceInMillis = today - day0
   const weeks = differenceInMillis / (7 * 24 * 60 * 60 * 1000)
@@ -60,7 +60,7 @@ function getWeekNumber() {
 }
 
 function getDayNumber() {
-  const day0 = new Date(2023, 7, 6)
+  const day0 = new Date(2023, 7, 7)
   const today = new Date()
   day0.setHours(0, 0, 0, 0)
   today.setHours(0, 0, 0, 0)
